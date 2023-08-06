@@ -606,9 +606,9 @@ The TRIANGLES table is described as follows:
 
 |  Column | Type |
 |---|---|
-| A  | Integer |
-| B | Integer(17) |
-| C | Integer(3)  |
+| A | Integer  |
+| B | Integer  |
+| C | Integer  |
 
 Each row in the table denotes the lengths of each of a triangle's three sides.
 
