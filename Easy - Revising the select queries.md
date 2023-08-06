@@ -22,3 +22,125 @@ SELECT *
 FROM CITY
 WHERE POPULATION > 100000 AND COUNTRYCODE = 'USA';
 ```
+
+
+**[Revising the Select Query-2](https://www.hackerrank.com/challenges/revising-the-select-query-2)**
+
+Query the names of all American cities in CITY with populations larger than 120,000. The CountryCode for America is USA.
+
+Input Format
+
+The CITY table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| NAME | VARCHAR2(17)   |
+| COUNTRY CODE  | VARCHAR2(3)  |
+| DISTRICT |  VARCHAR2(20) |
+| POPULATION | NUMBER |
+
+**Solution**
+```sql
+SELECT NAME
+FROM CITY
+WHERE POPULATION > 120000 AND COUNTRYCODE = 'USA';
+```
+
+
+**[Select All](https://www.hackerrank.com/challenges/select-all-sql)**
+
+Query all columns for every row in the CITY table.
+
+Input Format
+
+The CITY table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| NAME | VARCHAR2(17)   |
+| COUNTRY CODE  | VARCHAR2(3)  |
+| DISTRICT |  VARCHAR2(20) |
+| POPULATION | NUMBER |
+
+**Solution**
+```sql
+SELECT *
+FROM CITY;
+```
+
+
+**[Select by ID](https://www.hackerrank.com/challenges/select-by-id)**
+
+Query all columns for a city in CITY with the ID 1661.
+
+Input Format
+
+The CITY table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| NAME | VARCHAR2(17)   |
+| COUNTRY CODE  | VARCHAR2(3)  |
+| DISTRICT |  VARCHAR2(20) |
+| POPULATION | NUMBER |
+
+**Solution**
+```sql
+SELECT *
+FROM CITY
+WHERE ID = 1661;
+```
+
+
+**[Japanese Cities' Attributes](https://www.hackerrank.com/challenges/japanese-cities-attributes)**
+
+Query all attributes of every Japanese city in the CITY table. The COUNTRYCODE for Japan is JPN.
+
+Input Format
+
+The CITY table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| NAME | VARCHAR2(17)   |
+| COUNTRY CODE  | VARCHAR2(3)  |
+| DISTRICT |  VARCHAR2(20) |
+| POPULATION | NUMBER |
+
+**Solution**
+```sql
+SELECT *
+FROM CITY
+WHERE COUNTRYCODE = 'JPN';
+```
+
+
+**[Japanese Cities' Name](https://www.hackerrank.com/challenges/japanese-cities-name)**
+
+Query the the names of all the Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+
+Input Format
+
+The CITY table is described as follows:
+
+|  Field | Type |
+|---|-------|
+| ID  | NUMBER |
+| NAME | VARCHAR2(17)   |
+| COUNTRY CODE  | VARCHAR2(3)  |
+| DISTRICT |  VARCHAR2(20) |
+| POPULATION | NUMBER |
+
+**Solution**
+```sql
+SELECT NAME
+FROM CITY
+WHERE COUNTRYCODE = 'JPN'
+```
+
+
+
