@@ -167,12 +167,12 @@ You can write two separate queries to get the desired output. It need not be a s
 ```sql
 (SELECT CITY, LENGTH(CITY)
 FROM STATION
-ORDER BY LENGTH(CITY) ASC, CITY
+ORDER BY LENGTH(CITY) ASC , CITY ASC
  LIMIT 1)
 UNION
 (SELECT CITY, LENGTH(CITY)
 FROM STATION
-ORDER BY LENGTH(CITY) DESC, CITY
+ORDER BY LENGTH(CITY) DESC, CITY ASC
 LIMIT 1)
 ```
 
@@ -195,6 +195,212 @@ The STATION table is described as follows:
 | LONG_W | NUMBER |
 
 where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY REGEXP '^[a,e,i,o,u]'
+```
+
+
+
+**[Weather Observation Station 7](https://www.hackerrank.com/challenges/weather-observation-station-7)**
+
+Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY REGEXP '[a,e,i,o,u]$'
+```
+
+
+**[Weather Observation Station 8](https://www.hackerrank.com/challenges/weather-observation-station-8)**
+
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY REGEXP '^[a,e,i,o,u]' 
+  AND CITY REGEXP '[a,e,i,o,u]$'
+```
+
+
+**[Weather Observation Station 9](https://www.hackerrank.com/challenges/weather-observation-station-9)**
+
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY NOT REGEXP '^[a,e,i,o,u]'
+```
+
+
+
+**[Weather Observation Station 10](https://www.hackerrank.com/challenges/weather-observation-station-10)**
+
+Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY NOT REGEXP '[a,e,i,o,u]$'
+```
+
+
+
+**[Weather Observation Station 11](https://www.hackerrank.com/challenges/weather-observation-station-11)**
+
+Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY NOT REGEXP '^[a,e,i,o,u]' 
+   OR CITY NOT REGEXP '[a,e,i,o,u]$'
+```
+
+
+**[Weather Observation Station 12](https://www.hackerrank.com/challenges/weather-observation-station-12)**
+
+Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+
+**Solution**
+```sql
+SELECT DISTINCT (CITY)
+FROM STATION
+WHERE CITY NOT REGEXP '^[a,e,i,o,u]' AND
+      CITY NOT REGEXP '[a,e,i,o,u]$'
+```
+
+
+
+**[Weather Observation Station 13](https://www.hackerrank.com/challenges/weather-observation-station-13)**
+
+Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than 38.7880  and less than 137.2345. Truncate your answer to 4 decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+
+|  Field | Type |
+|---|---|
+| ID  | NUMBER |
+| CITY | VARCHAR2(21)   |
+| STATE  | VARCHAR2(2)  |
+| LAT_N |  NUMBER |
+| LONG_W | NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT ROUND(SUM(LAT_N),4)
+FROM STATION
+WHERE LAT_N > 38.7880 AND LAT_N < 137.2345
+```
+
+
+
+
+
+
+
+
 
 
 
