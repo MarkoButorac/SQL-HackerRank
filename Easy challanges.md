@@ -649,3 +649,38 @@ SELECT
 FROM 
   TRIANGLES;
 ```
+
+
+**[Draw The Triangle 1](https://www.hackerrank.com/challenges/draw-the-triangle-1)**
+
+P(R) represents a pattern drawn by Julia in R rows. The following pattern represents P(5):
+
+
+Sample Output
+```
+* * * * *
+* * * *
+* * * 
+* *
+*
+```
+
+Write a query to print the pattern P(20).
+
+**Solution**
+```sql
+SET @no_of_lines = 20 + 1;
+
+SELECT REPEAT ('* ', @no_of_lines := @no_of_lines -1)
+FROM INFORMATION_SCHEMA.TABLES
+```
+
+
+
+
+
+
+
+
+
+
