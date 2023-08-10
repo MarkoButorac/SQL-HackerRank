@@ -41,7 +41,8 @@ An OCCUPATIONS table that contains the following records:
 |Jenny| Doctor |
 |Priya| Singer |
 
-    Sample Output
+  Sample Output
+  ```
     Ashely(P)
     Christeen(P)
     Jane(A)
@@ -56,6 +57,7 @@ An OCCUPATIONS table that contains the following records:
     There are a total of 2 singers.
     There are a total of 3 actors.
     There are a total of 3 professors.
+  ```
 
 
 Explanation
@@ -77,13 +79,62 @@ ORDER BY a
 
 
 
+**[Binary Tree Nodes](https://www.hackerrank.com/challenges/binary-search-tree-1)**
+
+You are given a table, BST, containing two columns: N and P, where N represents the value of a node in Binary Tree, and P is the parent of N.
+
+|  Column | Type |
+|---|---|
+| N  | Integer |
+| P | Integer |
+
+Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+
+    Root: If node is root node.
+    Leaf: If node is leaf node.
+    Inner: If node is neither root nor leaf node.
+
+Sample Input
+
+|  N | P |
+|---|---|
+| 1  | 2 |
+| 3 | 2 |
+| 6 | 8  |
+| 9 | 8 |
+|2 | 5 |
+|8| 5 | 
+|5 | Null |
+
+Sample Output
+```
+  1 Leaf
+  2 Inner
+  3 Leaf
+  5 Root
+  6 Leaf
+  8 Inner
+  9 Leaf
+```
+
+Explanation
+
+The Binary Tree below illustrates the sample:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/5772428a-62d2-4cc7-bf67-d66f66c8532f)
 
 
 
-
-
-
-
-
+**Solution**
+```sql
+SELECT N,
+    (CASE
+        WHEN P IS NULL THEN 'Root'
+        WHEN N IN (SELECT DISTINCT(P) FROM BST WHERE P IS NOT NULL) THEN 'Inner'
+        ELSE 'Leaf'
+        END)
+FROM BST
+ORDER BY N
+```
 
 
