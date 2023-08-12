@@ -15,7 +15,7 @@ where [occupation_count] is the number of occurrences of an occupation in OCCUPA
 
 Note: There will be at least two entries in the table for each type of occupation.
 
-Input Format
+**Input Format**
 
 |  Column | Type |
 |---|---|
@@ -24,7 +24,7 @@ Input Format
 
 The OCCUPATIONS table is described as follows: Occupation will only contain one of the following values: Doctor, Professor, Singer or Actor.
 
-Sample Input
+**Sample Input**
 
 An OCCUPATIONS table that contains the following records:
 
@@ -41,7 +41,7 @@ An OCCUPATIONS table that contains the following records:
 |Jenny| Doctor |
 |Priya| Singer |
 
-  Sample Output
+  **Sample Output**
   ```
     Ashely(P)
     Christeen(P)
@@ -60,7 +60,7 @@ An OCCUPATIONS table that contains the following records:
   ```
 
 
-Explanation
+**Explanation**
 
 The results of the first query are formatted to the problem description's specifications.
 The results of the second query are ascendingly ordered first by number of names corresponding to each profession (2≤2≤3≤3), and then alphabetically by profession (doctor ≤ singer, and actor ≤ professor).
@@ -94,7 +94,7 @@ Write a query to find the node type of Binary Tree ordered by the value of the n
     Leaf: If node is leaf node.
     Inner: If node is neither root nor leaf node.
 
-Sample Input
+**Sample Input**
 
 |  N | P |
 |---|---|
@@ -106,7 +106,7 @@ Sample Input
 |8| 5 | 
 |5 | Null |
 
-Sample Output
+**Sample Output**
 ```
   1 Leaf
   2 Inner
@@ -117,7 +117,7 @@ Sample Output
   9 Leaf
 ```
 
-Explanation
+**Explanation**
 
 The Binary Tree below illustrates the sample:
 
@@ -143,7 +143,7 @@ Pivot the Occupation column in OCCUPATIONS so that each Name is sorted alphabeti
 
 Note: Print NULL when there are no more names corresponding to an occupation.
 
-Input Format
+**Input Format**
 
 The OCCUPATIONS table is described as follows:
 
@@ -154,7 +154,7 @@ The OCCUPATIONS table is described as follows:
 
 Occupation will only contain one of the following values: Doctor, Professor, Singer or Actor.
 
-Sample Input
+**Sample Input**
 
 |  Name | Occupation |
 |---|---|
@@ -170,14 +170,14 @@ Sample Input
 |Priya| Singer |
 
 
-Sample Output
+**Sample Output**
 ```
 Jenny    Ashley     Meera  Jane
 Samantha Christeen  Priya  Julia
 NULL     Ketty      NULL   Maria
 ```
 
-Explanation
+**Explanation**
 
 The first column is an alphabetically ordered list of Doctor names.
 The second column is an alphabetically ordered list of Professor names.
@@ -200,6 +200,97 @@ CREATE VIEW pq AS (
 SELECT MAX(Doctor),MAX(Professor),MAX(Singer),MAX(Actor) FROM pq 
 GROUP BY cr
 ```
+
+**[New Companies](https://https://www.hackerrank.com/challenges/the-company)**
+
+Amber's conglomerate corporation just acquired some new companies. Each of the companies follows this hierarchy:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/64eada74-72e1-445b-ac93-091717e2aad4)
+
+Given the table schemas below, write a query to print the company_code, founder name, total number of lead managers, total number of senior managers, total number of managers, and total number of employees. Order your output by ascending company_code.
+
+Note:
+    The tables may contain duplicate records.
+    The company_code is string, so the sorting should not be numeric. For example, if the company_codes are C_1, C_2, and C_10, then the ascending company_codes will be C_1, C_10, and C_2.
+
+**Input Format**
+
+The following tables contain company data:
+
+* Company: The company_code is the code of the company and founder is the founder of the company.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/a0f68a9f-ff28-4b99-8e77-ebc0baad78de)
+
+* Lead_Manager: The lead_manager_code is the code of the lead manager, and the company_code is the code of the working company.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/1aadc71b-4ad8-4ef9-ae3d-ab3e48c63550)
+
+* Senior_Manager: The senior_manager_code is the code of the senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/d8b8ab96-b871-45c8-a7bc-8ca4a7fd4030)
+
+* Manager: The manager_code is the code of the manager, the senior_manager_code is the code of its senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/17b14e0e-63db-458f-8244-fc480f173699)
+
+* Employee: The employee_code is the code of the employee, the manager_code is the code of its manager, the senior_manager_code is the code of its senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/4a290bf8-8d06-44fc-92c1-c154a182836b)
+
+**Sample Input**
+
+Company Table:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/4f7b56ef-0ede-48d7-b4d8-35b57d085153)
+
+Lead_Manager Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/2a1cef32-4bef-470d-8a8c-ed8847bd9d56)
+
+Senior_Manager Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/564a5a3e-020f-46f8-91d5-bcc64959708d)
+
+Manager Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/b27ebcc6-4988-46e6-91a8-73e817b3e5c7)
+
+Employee Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/1ed1f426-59da-449e-ad4d-1df1444e1bec)
+
+
+**Sample Output**
+```
+C1 Monika 1 2 1 2
+C2 Samantha 1 1 2 2
+```
+
+**Explanation**
+
+In company C1, the only lead manager is LM1. There are two senior managers, SM1 and SM2, under LM1. There is one manager, M1, under senior manager SM1. There are two employees, E1 and E2, under manager M1.
+In company C2, the only lead manager is LM2. There is one senior manager, SM3, under LM2. There are two managers, M2 and M3, under senior manager SM3. There is one employee, E3, under manager M2, and another employee, E4, under manager, M3.
+
+**Solution**
+```sql
+SELECT c.company_code, c.founder,
+COUNT(DISTINCT lm.lead_manager_code),
+COUNT(DISTINCT sm.senior_manager_code),
+COUNT(DISTINCT m.manager_code),
+COUNT(DISTINCT e.employee_code)
+FROM Company c
+JOIN Lead_Manager lm
+USING (company_code)
+JOIN Senior_Manager sm
+USING (company_code)
+JOIN Manager m
+USING (company_code)
+JOIN Employee e
+USING (company_code)
+GROUP BY c.company_code, c.founder
+ORDER BY c.company_code;
+```
+
 
 
 
