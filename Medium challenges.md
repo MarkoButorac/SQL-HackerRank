@@ -292,6 +292,77 @@ ORDER BY c.company_code;
 ```
 
 
+**[Top Competitors](https://www.hackerrank.com/challenges/full-score)**
+
+Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores in same number of challenges, then sort them by ascending hacker_id.
+
+
+**Input Format**
+
+The following tables contain contest data:
+
+Hackers: The hacker_id is the id of the hacker, and name is the name of the hacker. 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/e8cacb36-1b36-4ede-9b35-64f1cd95ff13)
+
+Difficulty: The difficult_level is the level of difficulty of the challenge, and score is the score of the challenge for the difficulty level.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/77d5a05b-4884-44a9-aee2-504a215909d4)
+
+Challenges: The challenge_id is the id of the challenge, the hacker_id is the id of the hacker who created the challenge, and difficulty_level is the level of difficulty of the challenge.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/b9ee1109-09b9-4e95-a8d4-c8e45670a16a)
+
+Submissions: The submission_id is the id of the submission, hacker_id is the id of the hacker who made the submission, challenge_id is the id of the challenge that the submission belongs to, and score is the score of the submission.
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/082fbbe5-6a5d-41c6-beaa-ff249c677dde)
+
+**Sample Input**
+
+Hackers Table:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/5c00b194-6c51-4abf-91fc-aab4c05a9b71)
+
+Difficulty Table:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/888eb97f-a66b-43bf-9b01-02ef20a8dab9)
+
+Challenges Table:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/53538435-fab7-4472-80d4-fcd0280344a4)
+
+Submissions Table:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/9a01dd8f-cb4f-4e95-a7c7-73496b740f43)
+
+**Sample Output**
+
+```
+90411 Joe
+```
+
+**Explanation**
+
+Hacker 86870 got a score of 30 for challenge 71055 with a difficulty level of 2, so 86870 earned a full score for this challenge.
+Hacker 90411 got a score of 30 for challenge 71055 with a difficulty level of 2, so 90411 earned a full score for this challenge.
+Hacker 90411 got a score of 100 for challenge 66730 with a difficulty level of 6, so 90411 earned a full score for this challenge.
+Only hacker 90411 managed to earn a full score for more than one challenge, so we print the their hacker_id and name as
+space-separated values.
+
+**Solution**
+```sql
+SELECT h.hacker_id, h.name
+FROM Hackers h
+JOIN Submissions s USING (hacker_id)
+JOIN Challenges c USING (challenge_id)
+JOIN Difficulty d ON c.difficulty_level = d.difficulty_level AND s.score = d.score
+GROUP BY h.hacker_id, h.name
+HAVING COUNT(c.challenge_id) > 1
+ORDER BY COUNT(c.challenge_id) DESC, h.hacker_id ASC;
+```
+
+
+
 
 
 
