@@ -462,6 +462,107 @@ ORDER BY w.power DESC, wp.age DESC;
 ```
 
 
+**[Challenges](https://www.hackerrank.com/challenges/challenges)**
+
+Julia asked her students to create some coding challenges. Write a query to print the hacker_id, name, and the total number of challenges created by each student. Sort your results by the total number of challenges in descending order. If more than one student created the same number of challenges, then sort the result by hacker_id. If more than one student created the same number of challenges and the count is less than the maximum number of challenges created, then exclude those students from the result.
+
+**Input Format**
+
+The following tables contain challenge data:
+
+Hackers: The hacker_id is the id of the hacker, and name is the name of the hacker. 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/653ebe19-d329-4c3f-918e-3f9fa3e855e3)
+
+Challenges: The challenge_id is the id of the challenge, and hacker_id is the id of the student who created the challenge. 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/6b747014-8711-4527-8eff-ac98381e2e9d)
+
+
+
+**Sample Input 0**
+
+Hackers Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/a016f67d-4ebc-4053-a201-4998265aa268)
+
+Challenges Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/39288d59-d6e8-4a8d-a326-c5a7dba90e8f)
+
+**Sample Output 0**
+```
+21283 Angela 6
+88255 Patrick 5
+96196 Lisa 1
+```
+
+**Sample Input 1**
+
+Hackers Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/6b8a9009-613e-44d1-a915-6a8b5e81bf8b)
+
+Challenges Table: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/d660243c-11a4-444b-9e22-eaf304ea7b40)
+
+**Sample Output 1**
+```
+12299 Rose 6
+34856 Angela 6
+79345 Frank 4
+80491 Patrick 3
+81041 Lisa 1
+```
+
+**Explanation**
+
+For Sample Case 0, we can get the following details:
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/57513b90-d8cf-46e7-a53a-fdd74b935cb5)
+
+Students 5077 and 62743 both created challenges, but the maximum number of challenges created is so these students are excluded from the result.
+
+For Sample Case 1, we can get the following details: 
+
+![afbeelding](https://github.com/MarkoButorac/SQL-HackerRank/assets/141552522/68188314-7d0a-49ec-a837-d2be65a89f19)
+
+Students 12299 and 34856 both created 6 challenges. Because 6 is the maximum number of challenges created, these students are included in the result.
+
+**Solution**
+```sql
+WITH challenge_counts AS (
+    SELECT DISTINCT
+        h.hacker_id,
+        h.name,
+        COUNT(c.challenge_id) OVER(PARTITION BY c.hacker_id) AS num_challenges
+    FROM
+        Hackers h 
+JOIN Challenges c ON h.hacker_id = c.hacker_id
+), max_challenge_count AS (
+    SELECT MAX(num_challenges) AS maxn
+    FROM challenge_counts
+), duplicate AS (
+    SELECT num_challenges AS dups_num_chal
+    FROM challenge_counts
+    GROUP BY num_challenges
+    HAVING COUNT(*) > 1
+)
+SELECT
+    *
+FROM
+    challenge_counts
+WHERE
+    num_challenges = (SELECT maxn FROM max_challenge_count)
+    OR
+    num_challenges NOT IN (SELECT dups_num_chal FROM duplicate)
+ORDER BY
+    num_challenges DESC,
+    hacker_id;
+```
+
+
 
 
 
